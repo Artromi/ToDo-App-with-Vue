@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo with Vue</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h1>ToDo App</h1>
+      <form id="form" @submit.prevent="addNewTodo">
+        <input type="text" placeholder="Pls add toDo" v-model="todoInput" />
+        <button type="submit">Add</button>
+      </form>
+      <!-- filter & delete section -->
+      <form id="filter-and-delete-section" autocomplete="off">
+        <div id="filter-container">
+          <h2>Filter & Options</h2>
+          <label for="all">
+            <input
+              type="radio"
+              class="radio-buttons"
+              id="all"
+              name="radio-options"
+              checked
+              @click="filter = 'all'"
+            />
+            All</label
+          >
+          <label for="open">
+            <input
+              type="radio"
+              class="radio-buttons"
+              id="open"
+              name="radio-options"
+              @click="filter = 'open'"
+            />
+            Open</label
+          >
+          <label for="done">
+            <input
+              type="radio"
+              class="radio-buttons"
+              id="done"
+              name="radio-options"
+              @click="filter = 'done'"
+            />
+            Done</label
+          >
+        </div>
+        <div id="rmv-button-container">
+          <button id="btn-remove" @click="removeDoneTodos">
+            Remove done ToDos
+          </button>
+        </div>
+      </form>
+      <!-- toDo list -->
+      <h3>Your ToDos</h3>
+      <div v-if="todos.length > 0">
+        <ul id="todo-list">
+          <li
+            v-for="todo of filteredTodos"
+            :key="todo.id"
+            :class="{done: todo.done}"
+          >
+            <input
+              type="checkbox"
+              class="checkbox"
+              v-model="todo.done"
+              @change="changeDoneState(todo)"
+            />
+            {{ todo.description }}
+          </li>
+        </ul>
+      </div>
+      <p v-else>- There is nothing on your toDo-list -</p>
+    </div>
+    <!-- scripts -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

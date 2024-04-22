@@ -1,0 +1,141 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --clr-primary: #dd5470;
+  --clr-secondary: #3d88af;
+  --clr-accent: #ebac3d;
+  --clr-accent-secondary: #2b456a;
+  --clr-done: mediumaquamarine;
+  --bg-primary: whitesmoke;
+  --text-clr: #fffefe;
+}
+html {
+  font-size: 26px;
+  font-family: sans-serif;
+}
+body {
+  margin: 0;
+  background-color: var(--bg-primary);
+}
+h1 {
+  font-size: 3rem;
+  color: var(--text-clr);
+  text-shadow: var(--clr-secondary) 4px 4px, var(--clr-accent) 8px 8px;
+  width: 100%;
+  text-align: center;
+  background-color: var(--clr-primary);
+  margin: 0;
+  margin-bottom: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
+}
+h2,
+h3 {
+  font-size: 1rem;
+  margin-top: 2rem;
+}
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#filter-container {
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style: none;
+  border-radius: 5px;
+  padding-inline: 0.5rem;
+  padding-block: 0.2rem;
+  background-color: var(--text-clr);
+  margin-bottom: 0.25rem;
+}
+button,
+input[type="text"] {
+  padding-inline: 0.5rem;
+  padding-block: 0.5rem;
+  margin-left: 0.5rem;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  border: solid transparent;
+}
+
+button {
+  border: 3px solid transparent;
+  background-color: var(--clr-secondary);
+  color: var(--text-clr);
+  font-weight: bold;
+  box-shadow: var(--clr-primary) 4px 4px;
+  margin-top: 1rem;
+}
+
+button:active {
+  border: 3px solid var(--clr-accent);
+}
+.radio-buttons {
+  border-radius: 50%;
+  appearance: none;
+  border-radius: 100%;
+  width: 1rem;
+  height: 1rem;
+  border: 3px solid var(--clr-accent-secondary);
+  cursor: pointer;
+}
+.radio-buttons:checked {
+  background-color: var(--clr-secondary);
+  border-color: var(--clr-accent);
+}
+.checkbox {
+  appearance: none;
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 3px solid darkslategrey;
+  border-radius: 5px;
+  transform: translateY(0.15rem);
+  position: relative; /* Make the ::before pseudo-element relative to the checkbox */
+}
+.checkbox:checked {
+  background-color: var(--clr-done);
+}
+
+.checkbox::before {
+  content: ""; /* Ensure the pseudo-element has content */
+  position: absolute; /* Position the checkmark relative to the checkbox */
+  top: 0.1rem; /* Adjust position for centering */
+  left: 0.12rem; /* Adjust position for centering */
+  width: 0.4rem; /* Width of the checkmark */
+  height: 0.25rem; /* Height of the checkmark */
+  border-style: solid; /* Define border style */
+  border-width: 3px 3px 0 0; /* Border thickness and shape to create an angled line */
+  transform: rotate(130deg); /* Rotate the line to create a checkmark */
+  opacity: 0; /* Initially make it transparent */
+}
+.checkbox:checked::before {
+  opacity: 1; /* Make the checkmark visible when checkbox is checked */
+  color: white;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+p {
+  font-size: 0.75rem;
+  margin-top: 2rem;
+  padding: 0.5rem;
+  background-color: rgb(235, 233, 233);
+  border-radius: 10px;
+}
